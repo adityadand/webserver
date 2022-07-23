@@ -120,6 +120,25 @@ def my_form_screenshot_post():
 def my_form_changewallpaper():
     return render_template('changewallpaper.html')
 
+
+@app.route('/additional')
+def my_form_additional():
+    return render_template('additional.html')
+
+@app.route('/tts')
+def my_form_tts():
+    return render_template('tts.html')
+
+@app.route('/tts', methods=['POST'])
+def my_form_tts_post():
+    txt = request.form['text']
+    engine = pyttsx3.init()
+    voices = engine.getProperty('voices')
+    engine.setProperty('voice', voices[1].id)
+    engine.say(txt)
+    engine.runAndWait()
+    return redirect(request.referrer)
+
 @app.route('/changewallpaper', methods=['POST'])
 def my_form_changewallpaper_post():
     image_url = request.form['text']
