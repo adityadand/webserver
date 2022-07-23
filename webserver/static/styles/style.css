@@ -1,0 +1,19 @@
+body{	
+	background: black  !important; 
+}
+
+div.container{
+ 	padding: 100px;
+  	height: 50px;
+	width: 50px;
+	}
+
+div{
+	.text-aligin: center;
+}
+
+.btn-primary{
+	margin: 10px auto;
+}
+
+	

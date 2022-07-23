@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+		<style>
+
+		body{	
+		background: black  !important; 
+			}
+
+		.btn-info{
+		margin: 80px auto;
+			}
+
+			input[type="range"]{
+				margin-top: 50px;
+				width:165px;
+				padding: 5px;
+				height: 125px;
+				transform: rotate(270deg);
+
+			}
+
+			.wrapper{
+				display: flex;
+				justify-content: center;
+				
+			}
+
+			label {
+				display: block;
+		  	padding: 3px;
+  			 max-width: 100%;
+  			 margin: 22px;
+   			 color: hotpink;
+			}
+
+		.icon-ltgreen {
+        color: #00FF00;
+      }
+		.icon-yellow {
+        color: yellow;
+      }
+
+      .glyphicon{
+      	margin: 10px;
+      	padding: 60px;
+      	margin-top: -50px;
+      	margin-bottom: -50px;
+      	font-size: 24px;
+      }
+
+
+	</style>
+
+	<script>
+		function sumbitform(){
+			document.getElementById('myform').submit();
+		}
+</script>
+
+
+
+
+</head>
+<body bgcolor ="black">
+	<center>
+<br>
+<br>
+<br>
+<br>
+<br>
+<font color="wheat">
+<h1>Media Control</h1>
+</font>
+<br>
+<br>
+ 	<span class="glyphicon glyphicon-volume-up icon-ltgreen"></span> 
+ 	<span class="glyphicon glyphicon-adjust icon-yellow"></span>
+
+<div class="container">
+<form class="form-inline" id="myform" method="POST">
+<div class="form-group">
+<div class="wrapper">
+ 	<input type="range" id="soundb" name="soundb" value=this.value onchange="sumbitform()">
+	 <input type="range" id="brightb" name="brightb" value=this.value onchange="sumbitform()">
+</div>
+</div>
+</form>
+
+    <div id="successAlert" class="alert alert-success" role="alert" style="display:none;"></div>
+    <div id="errorAlert" class="alert alert-danger" role="alert" style="display:none;"></div>
+
+<a href="/" class="btn btn-info" role="button">
+	Home
+</a>
+
+</center>
+
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('form').on('submit', function(event) {
+        $.ajax({
+            data : {
+                soundb : $('#soundb').val(),
+                brightb : $('#brightb').val()
+            },
+            type : 'POST',
+            url : '/mediacontrol'
+        })
+        .done(function(data) {
+            if (data.error) {
+                $('#errorAlert').text(data.error).show();
+                $('#successAlert').hide();
+            }
+            else {
+                $('#successAlert').text(data.name).show();
+                $('#errorAlert').hide();
+            }
+        });
+        event.preventDefault();
+    });
+});
+
+</script>
+
+</body>
+</html>
+
+

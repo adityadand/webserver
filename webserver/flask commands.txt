@@ -1,0 +1,5 @@
+set FLASK_APP=webserve.py
+// to detect python file by flask
+
+python -m flask run
+// to run webserver
