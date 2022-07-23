@@ -15,3 +15,6 @@ then run by
 
 # to use volume feature you need to install setvol tool
 https://rlatour.com/setvol/
+
+# using features
+![image](https://user-images.githubusercontent.com/33375699/180612950-046bc86e-7332-4484-8ea5-c2beac8b3c6c.png)
